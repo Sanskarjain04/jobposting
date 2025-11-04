@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 
 export default function OfflinePage() {
   const [isOnline, setIsOnline] = useState(false);
@@ -40,11 +39,12 @@ export default function OfflinePage() {
   };
 
   return (
-    <div className="flex mx-auto h-screen max-w-[500px] w-full flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 p-6">
-      <div className="text-center">
-        <div className="mb-8">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 dark:bg-gray-900 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md text-center">
+        {/* Icon */}
+        <div className="mb-6 sm:mb-8">
           <svg
-            className="mx-auto h-24 w-24 text-gray-400"
+            className="mx-auto h-16 w-16 text-gray-400 sm:h-20 sm:w-20 md:h-24 md:w-24"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -58,30 +58,39 @@ export default function OfflinePage() {
           </svg>
         </div>
 
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        {/* Title */}
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl md:text-4xl">
           {isOnline ? "You're Back Online!" : "You're Offline"}
         </h1>
 
-        <p className="text-gray-600 dark:text-gray-400 mb-8">
+        {/* Description */}
+        <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 sm:mt-4 sm:text-base md:text-lg">
           {isOnline
             ? "Your connection has been restored."
-            : "It looks like you've lost your internet connection. Some features may be limited, but you can still browse cached content."}
+            : "It looks like you've lost your internet connection. Some features may be limited."}
         </p>
 
-        <div className="space-y-4">
+        {/* Action Buttons */}
+        <div className="mt-6 space-y-3 sm:mt-8">
           {isOnline ? (
-            <Link href="/" className="block">
-              <Button className="w-full">Return to Homepage</Button>
+            <Link
+              href="/"
+              className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:px-6 sm:py-3 sm:text-base"
+            >
+              Return to Homepage
             </Link>
           ) : (
             <>
-              <Link href="/jobs" className="block">
-                <Button className="w-full">Browse Cached Jobs</Button>
+              <Link
+                href="/jobs"
+                className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:px-6 sm:py-3 sm:text-base"
+              >
+                Browse Cached Jobs
               </Link>
 
               <button
                 onClick={handleRefresh}
-                className="w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700 transition-colors"
+                className="inline-flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 sm:px-6 sm:py-3 sm:text-base"
               >
                 Try Again
               </button>
@@ -89,8 +98,9 @@ export default function OfflinePage() {
           )}
         </div>
 
-        <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-          <p className="text-sm text-blue-800 dark:text-blue-200">
+        {/* Tip */}
+        <div className="mt-6 rounded-lg bg-blue-50 p-3 dark:bg-blue-900/20 sm:mt-8 sm:p-4">
+          <p className="text-xs text-blue-800 dark:text-blue-200 sm:text-sm">
             💡 <strong>Tip:</strong> When you're back online, the app will
             automatically sync your data.
           </p>
