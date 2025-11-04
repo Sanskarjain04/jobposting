@@ -66,7 +66,7 @@ export function ApplyButton({ jobId, isOwner, application, isAuthenticated }: Ap
 
   // Already applied
   if (application) {
-    const statusColors: Record<string, "default" | "success" | "warning" | "danger"> = {
+    const statusColors: Record<string, "default" | "success" | "warning" | "danger" | "info"> = {
       PENDING: "warning",
       REVIEWING: "info",
       ACCEPTED: "success",
